@@ -1,4 +1,14 @@
 #include <stdio.h>
 
 int main() {
+  int matrix[3][3] = { {1, 6, 8}, {3, 6, 9}, {2, 2, 2} };
 
+  int i, j;
+  for (i = 0; i < 3; i++) {
+    for (j = 0; j < 3; j++) {
+      if (i == j) printf("%d\n", matrix[i][j]);
+    }
+  }
+
+  return 0;
+}
