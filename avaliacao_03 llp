@@ -14,5 +14,5 @@ int main () {
 
   fgets (pessoa.nome, fgets
     50, stdin);
-  //terminar//
+  //terminar chatgpt//
 }
