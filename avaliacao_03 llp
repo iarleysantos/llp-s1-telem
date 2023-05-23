@@ -1,36 +1,90 @@
 #include <stdio.h>
-//definição de uma estrutura
 
+// Definição da estrutura
 struct Dados {
+  
+   
 int idade;
-char nome[50]; 
+    
+   
+char nome[50];
 };
+
 int main() {
-  struc Dados dados;
+    
+   
+struct Dados dados;
 
-  //receber os dados da estrutura
-  
-  printf("Digite seu nome:");
- 
-  scanf("%d", dados.nome);
-  
-  printf("Digite sua idade:");
+    
 
-  scanf("%d", &dados.idade);
+// Receber os dados da estrutura
+    
+   
+printf("Digite a idade: ");
+    
+   
+scanf("%d", &dados.idade);
 
+    
 
-  //abrir arquivo para a escrita
+printf("Digite o nome: ");
+    
+   
+scanf("%s", dados.nome);
 
-  FILE *arquivo = fopen(
-  FILE *arquivo = fopen
-  FILE *arquivo = 
-  FILE *arquivo 
-  FILE *ar
-  FILE *
-  FILE
+    
 
-  "dados.txt", "w");
-  
-  
-}
+// Abrir o arquivo para escrita
+    FILE *arquivo = fopen(
+    FILE *arquivo = fopen
+
+    FILE *arquivo =
+
+    FILE *arquivo
+
+    FILE *ar
+
+    FILE *
+
+    FILE
+
+   
+"dados.txt", "w");
+    
+   
+if (arquivo == NULL) {
+        
+       
+printf("Erro ao abrir o arquivo.\n");
+        
+       
+return 1;
+    }
+
+    
+    }
+
+   
+
+    }
+
+//Gravação da estrutura no arquivo
+
+fprint(arquivo, "Idade: %d\n", dados.idade);
+fprint(arquivo, "Nome: %s"\n, dados.nome);
+fprint(arquivo, "Altura: %.2f\n", dados.altura);
+
+//Fechamento do arquivo
+
+fclose(arquivo);
+fclose(arquivo);
+fclose(arquivo);
+fclose(ar);
+
+printf("Estrutura gravada no arquivo com sucesso. \n");
+
+return 0;
+
+//falta terminar
+
  
