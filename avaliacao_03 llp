@@ -1,18 +1,36 @@
 #include <stdio.h>
-#include <stdlib.h>
- struct Dados {
+//definição de uma estrutura
 
-char nome[50];
+struct Dados {
 int idade;
-float altura;
- };
+char nome[50]; 
+};
+int main() {
+  struc Dados dados;
 
-int main () {
-  struct Dados pessoa; 
+  //receber os dados da estrutura
+  
+  printf("Digite seu nome:");
+ 
+  scanf("%d", dados.nome);
+  
+  printf("Digite sua idade:");
 
-  printf ("Digite seu nome");
+  scanf("%d", &dados.idade);
 
-  fgets (pessoa.nome, fgets
-    50, stdin);
-  //terminar chatgpt//
+
+  //abrir arquivo para a escrita
+
+  FILE *arquivo = fopen(
+  FILE *arquivo = fopen
+  FILE *arquivo = 
+  FILE *arquivo 
+  FILE *ar
+  FILE *
+  FILE
+
+  "dados.txt", "w");
+  
+  
 }
+ 
