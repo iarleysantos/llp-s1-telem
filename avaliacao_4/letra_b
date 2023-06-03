@@ -1,18 +1,28 @@
 #include <stdio.h>
-#include <math.h>
 
 int main() {
-    int numero;
+    float nota1, nota2, nota3;
+    float media;
 
-    // Lendo o número inteiro
-    printf("Digite um número inteiro: ");
-    scanf("%d", &numero);
+    // Lendo as notas das provas
+    printf("Digite a nota da primeira prova: ");
+    scanf("%f", &nota1);
+    printf("Digite a nota da segunda prova: ");
+    scanf("%f", &nota2);
+    printf("Digite a nota da terceira prova: ");
+    scanf("%f", &nota3);
 
-    if (numero < 0) {
-        printf("Número inválido\n");
+    // Calculando a média ponderada
+    media = (nota1 + nota2 + (nota3 * 2)) / 4;
+
+    // Exibindo a média do aluno
+    printf("Média: %.2f\n", media);
+
+    // Verificando se o aluno foi aprovado ou reprovado
+    if (media >= 60) {
+        printf("Aluno aprovado!\n");
     } else {
-        double logaritmo = log10(numero);
-        printf("O logaritmo de %d é %.2f\n", numero, logaritmo);
+        printf("Aluno reprovado!\n");
     }
 
     return 0;
