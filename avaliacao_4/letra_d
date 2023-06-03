@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+    float baseMaior, baseMenor, altura, area;
+
+    // Lendo as medidas do trapézio
+    printf("Digite o valor da base maior: ");
+    scanf("%f", &baseMaior);
+    printf("Digite o valor da base menor: ");
+    scanf("%f", &baseMenor);
+    printf("Digite o valor da altura: ");
+    scanf("%f", &altura);
+
+    // Verificando se as bases são maiores que zero
+    if (baseMaior > 0 && baseMenor > 0) {
+        // Calculando a área do trapézio
+        area = (baseMaior + baseMenor) * altura / 2;
+
+        // Exibindo a área calculada
+        printf("A área do trapézio é: %.2f\n", area);
+    } else {
+        printf("As bases devem ser números maiores que zero.\n");
+    }
+
+    return 0;
+}
