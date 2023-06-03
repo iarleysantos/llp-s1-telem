@@ -1,90 +1,40 @@
 #include <stdio.h>
 
 // Definição da estrutura
-struct Dados {
-  
-   
-int idade;
-    
-   
-char nome[50];
-};
+typedef struct {
+    int matricula;
+    char nome[50];
+    float ano;
+} Aluno;
 
 int main() {
-    
-   
-struct Dados dados;
+    // Criação da estrutura
+    Aluno aluno;
 
-    
+    // Recebendo os dados do usuário
+    printf("Informe a matricula do aluno: ");
+    scanf("%d", &aluno.matricula);
+    printf("Informe o nome do aluno: ");
+    scanf(" %[^\n]", aluno.nome);
+    printf("Informe o ano que o aluno estuda: ");
+    scanf("%f", &aluno.ano);
 
-// Receber os dados da estrutura
-    
-   
-printf("Digite a idade: ");
-    
-   
-scanf("%d", &dados.idade);
-
-    
-
-printf("Digite o nome: ");
-    
-   
-scanf("%s", dados.nome);
-
-    
-
-// Abrir o arquivo para escrita
-    FILE *arquivo = fopen(
-    FILE *arquivo = fopen
-
-    FILE *arquivo =
-
-    FILE *arquivo
-
-    FILE *ar
-
-    FILE *
-
-    FILE
-
-   
-"dados.txt", "w");
-    
-   
-if (arquivo == NULL) {
-        
-       
-printf("Erro ao abrir o arquivo.\n");
-        
-       
-return 1;
+    // Abertura do arquivo para escrita
+    FILE *arquivo = fopen("dados.txt", "w");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.");
+        return 1;
     }
 
-    
-    }
+    // Gravando a estrutura no arquivo
+    fprintf(arquivo, "Matricula: %d\n", aluno.matricula);
+    fprintf(arquivo, "Nome: %s\n", aluno.nome);
+    fprintf(arquivo, "Ano: %.2f\n", aluno.ano);
 
-   
+    // Fechando o arquivo
+    fclose(arquivo);
 
-    }
+    printf("Estrutura gravada no arquivo com sucesso!");
 
-//Gravação da estrutura no arquivo
-
-fprint(arquivo, "Idade: %d\n", dados.idade);
-fprint(arquivo, "Nome: %s"\n, dados.nome);
-fprint(arquivo, "Altura: %.2f\n", dados.altura);
-
-//Fechamento do arquivo
-
-fclose(arquivo);
-fclose(arquivo);
-fclose(arquivo);
-fclose(ar);
-
-printf("Estrutura gravada no arquivo com sucesso. \n");
-
-return 0;
-
-//falta terminar
-
- 
+    return 0;
+}
