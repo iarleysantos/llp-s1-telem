@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+// Definição da estrutura
+typedef struct {
+    int matricula;
+    char nome[50];
+    float ano;
+} Aluno;
+
+int main() {
+    // Criação da estrutura
+    Aluno aluno;
+
+    // Recebendo os dados do usuário
+    printf("Informe a matricula do aluno: ");
+    scanf("%d", &aluno.matricula);
+    printf("Informe o nome do aluno: ");
+    scanf(" %[^\n]", aluno.nome);
+    printf("Informe o ano que o aluno estuda: ");
+    scanf("%f", &aluno.ano);
+
+    // Abertura do arquivo para escrita
+    FILE *arquivo = fopen("dados.txt", "w");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.");
+        return 1;
+    }
+
+    // Gravando a estrutura no arquivo
+    fprintf(arquivo, "Matricula: %d\n", aluno.matricula);
+    fprintf(arquivo, "Nome: %s\n", aluno.nome);
+    fprintf(arquivo, "Ano: %.2f\n", aluno.ano);
+
+    // Fechando o arquivo
+    fclose(arquivo);
+
+    printf("Estrutura gravada no arquivo com sucesso!");
+
+    return 0;
+}
