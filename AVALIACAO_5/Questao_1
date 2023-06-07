@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() {
+    // A) Criar/abrir um arquivo texto de nome "arq.txt"
+    FILE *arquivo = fopen("arq.txt", "w");
+
+    // B) Permitir que o usuário grave diversos caracteres nesse arquivo
+    char caractere;
+    printf("Digite um caractere ('0' para sair): ");
+    scanf(" %c", &caractere);
+
+    while (caractere != '0') {
+        fputc(caractere, arquivo);
+        printf("Digite um caractere ('0' para sair): ");
+        scanf(" %c", &caractere);
+    }
+
+    // C) Fechar o arquivo
+    fclose(arquivo);
+
+    // Abrir e ler o arquivo, caractere por caractere, e escrever na tela todos os caracteres armazenados
+    arquivo = fopen("arq.txt", "r");
+    printf("Conteúdo do arquivo:\n");
+
+    while ((caractere = fgetc(arquivo)) != EOF) {
+        printf("%c\n", caractere);
+    }
+
+    // Fechar o arquivo
+    fclose(arquivo);
+
+    return 0;
+}
