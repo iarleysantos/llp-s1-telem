@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void inicializarMatriz(int** matriz, int linhas, int colunas) {
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            matriz[i][j] = i + j;  // Exemplo de inicialização, você pode alterar conforme necessário
+        }
+    }
+}
+
+void somarMatrizes(int** matrizA, int** matrizB, int** matrizC, int linhas, int colunas) {
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            matrizA[i][j] = matrizB[i][j] + matrizC[i][j];
+        }
+    }
+}
+
+void imprimirMatriz(int** matriz, int linhas, int colunas) {
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int linhas, colunas;
+    int **matrizA, **matrizB, **matrizC;
+
+    printf("Digite o número de linhas: ");
+    scanf("%d", &linhas);
+
+    printf("Digite o número de colunas: ");
+    scanf("%d", &colunas);
+
+    // Alocando as matrizes
+    matrizA = (int**)malloc(linhas * sizeof(int*));
+    matrizB = (int**)malloc(linhas * sizeof(int*));
+    matrizC = (int**)malloc(linhas * sizeof(int*));
+
+    for (int i = 0; i < linhas; i++) {
+        matrizA[i] = (int*)malloc(colunas * sizeof(int));
+        matrizB[i] = (int*)malloc(colunas * sizeof(int));
+        matrizC[i] = (int*)malloc(colunas * sizeof(int));
+    }
+
+    // Inicializando as matrizes B e C
+    inicializarMatriz(matrizB, linhas, colunas);
+    inicializarMatriz(matrizC, linhas, colunas);
+
+    // Calculando A = B + C
+    somarMatrizes(matrizA, matrizB, matrizC, linhas, colunas);
+
+    // Mostrando as matrizes A, B e C
+    printf("Matriz A:\n");
+    imprimirMatriz(matrizA, linhas, colunas);
+
+    printf("\nMatriz B:\n");
+    imprimirMatriz(matrizB, linhas, colunas);
+
+    printf("\nMatriz C:\n");
+    imprimirMatriz(matrizC, linhas, colunas);
+
+    // Liberando a memória alocada
+    for (int i = 0; i < linhas; i++) {
+        free(matrizA[i]);
+        free(matrizB[i]);
+        free(matrizC[i]);
+    }
+    free(matrizA);
+    free(matrizB);
+    free(matrizC);
+
+    return 0;
+}
