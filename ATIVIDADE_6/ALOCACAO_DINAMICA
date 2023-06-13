@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void inicializarMatriz(int** matriz, int linhas, int colunas) {
+void inicializarMatriz(int **matriz, int linhas, int colunas) {
     for (int i = 0; i < linhas; i++) {
         for (int j = 0; j < colunas; j++) {
-            matriz[i][j] = i + j;  // Exemplo de inicialização, você pode alterar conforme necessário
+            matriz[i][j] = i + j;
         }
     }
 }
 
-void somarMatrizes(int** matrizA, int** matrizB, int** matrizC, int linhas, int colunas) {
+void somarMatrizes(int **matrizA, int **matrizB, int **matrizC, int linhas, int colunas) {
     for (int i = 0; i < linhas; i++) {
         for (int j = 0; j < colunas; j++) {
             matrizA[i][j] = matrizB[i][j] + matrizC[i][j];
@@ -17,62 +17,69 @@ void somarMatrizes(int** matrizA, int** matrizB, int** matrizC, int linhas, int 
     }
 }
 
-void imprimirMatriz(int** matriz, int linhas, int colunas) {
+void mostrarMatriz(int **matriz, int linhas, int colunas) {
     for (int i = 0; i < linhas; i++) {
         for (int j = 0; j < colunas; j++) {
             printf("%d ", matriz[i][j]);
         }
         printf("\n");
     }
+    printf("\n");
 }
 
 int main() {
     int linhas, colunas;
-    int **matrizA, **matrizB, **matrizC;
 
-    printf("Digite o número de linhas: ");
+    printf("Digite o número de linhas das matrizes: ");
     scanf("%d", &linhas);
 
-    printf("Digite o número de colunas: ");
+    printf("Digite o número de colunas das matrizes: ");
     scanf("%d", &colunas);
 
-    // Alocando as matrizes
-    matrizA = (int**)malloc(linhas * sizeof(int*));
-    matrizB = (int**)malloc(linhas * sizeof(int*));
-    matrizC = (int**)malloc(linhas * sizeof(int*));
-
+  
+    int **matrizB = (int **)malloc(linhas * sizeof(int *));
     for (int i = 0; i < linhas; i++) {
-        matrizA[i] = (int*)malloc(colunas * sizeof(int));
-        matrizB[i] = (int*)malloc(colunas * sizeof(int));
-        matrizC[i] = (int*)malloc(colunas * sizeof(int));
+        matrizB[i] = (int *)malloc(colunas * sizeof(int));
     }
 
-    // Inicializando as matrizes B e C
+    //iniciar matriz B
     inicializarMatriz(matrizB, linhas, colunas);
+
+    
+    int **matrizC = (int **)malloc(linhas * sizeof(int *));
+    for (int i = 0; i < linhas; i++) {
+        matrizC[i] = (int *)malloc(colunas * sizeof(int));
+    }
+
+    //iniciar matriz C
     inicializarMatriz(matrizC, linhas, colunas);
 
-    // Calculando A = B + C
+  
+    int **matrizA = (int **)malloc(linhas * sizeof(int *));
+    for (int i = 0; i < linhas; i++) {
+        matrizA[i] = (int *)malloc(colunas * sizeof(int));
+    }
+
+    //calcular A = B+C
     somarMatrizes(matrizA, matrizB, matrizC, linhas, colunas);
 
-    // Mostrando as matrizes A, B e C
     printf("Matriz A:\n");
-    imprimirMatriz(matrizA, linhas, colunas);
+    mostrarMatriz(matrizA, linhas, colunas);
 
-    printf("\nMatriz B:\n");
-    imprimirMatriz(matrizB, linhas, colunas);
+    printf("Matriz B:\n");
+    mostrarMatriz(matrizB, linhas, colunas);
 
-    printf("\nMatriz C:\n");
-    imprimirMatriz(matrizC, linhas, colunas);
+    printf("Matriz C:\n");
+    mostrarMatriz(matrizC, linhas, colunas);
 
-    // Liberando a memória alocada
     for (int i = 0; i < linhas; i++) {
-        free(matrizA[i]);
         free(matrizB[i]);
         free(matrizC[i]);
+        free(matrizA[i]);
     }
-    free(matrizA);
     free(matrizB);
     free(matrizC);
+    free(matrizA);
 
     return 0;
 }
