@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char filename[100];
+    printf("Digite o nome do arquivo: ");
+    scanf("%s", filename);
+
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    int vogais = 0;
+    char ch;
+    while ((ch = fgetc(file)) != EOF) {
+        ch = tolower(ch); // Converte o caractere para minúsculo
+        
+        // Verifica se o caractere é uma vogal
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+            vogais++;
+        }
+    }
+
+    fclose(file);
+
+    printf("O arquivo possui %d vogais.\n", vogais);
+
+    return 0;
+}
